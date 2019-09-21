@@ -45,13 +45,24 @@ export const showForm = function(users) {
    }
 };
 
-export const editTable = (e, users) => {
+export const editTable = (e, table, users) => {
    e.preventDefault();
    let rowNumber = stateRowNumber;
    let oneUser = users[rowNumber];
+   let row = table.rows[rowNumber + 1];
+   row.innerHTML = '';
    for (let key in oneUser) {
       let valueType = typeof oneUser[key];
       if (key != 'id') oneUser[key] = document.getElementById(key).value;
       if (valueType === 'boolean') oneUser[key] = document.getElementById(key).checked;
+      if (key === 'id') row.dataset.key = oneUser[key];
+      else {
+         let cell = row.insertCell();
+         let text = '';
+         if (oneUser[key] === true) text = document.createTextNode('Yes');
+         else if (oneUser[key] === false) text = document.createTextNode('No');
+         else text = document.createTextNode(oneUser[key]);
+         cell.appendChild(text);
+      }
    }
 };

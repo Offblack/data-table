@@ -1,4 +1,4 @@
-import { showForm, showRowNumber } from './form-actions';
+import { showForm } from './form-actions';
 
 //Generate Data
 const generateData = (row, element) => {
