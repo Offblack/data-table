@@ -1,3 +1,4 @@
+//Generate Data
 const generateData = (row, element) => {
    for (let key in element) {
       if (key === 'id') row.dataset.key = element[key];
@@ -26,8 +27,8 @@ export const generateTableHead = (table, data) => {
    }
 };
 
-//Generate Table
-export const generateTable = (table, data) => {
+//Generate Data Rows
+export const generateDataRows = (table, data) => {
    for (let element of data) {
       let row = table.insertRow();
       generateData(row, element);
