@@ -1,6 +1,6 @@
 import { users } from '../data/data';
 import { generateTableHead, generateDataRows } from './table-actions';
-import { generateForm } from './form-actions';
+import { generateForm, editForm } from './form-actions';
 
 const appInit = () => {
    let keyData = Object.keys(users[0]);
@@ -9,9 +9,9 @@ const appInit = () => {
    formInit(keyData, valueData);
 };
 
-const tableInit = data => {
+const tableInit = keyData => {
    let table = document.createElement('table');
-   generateTableHead(table, data);
+   generateTableHead(table, keyData);
    generateDataRows(table, users);
    document.body.appendChild(table);
 };
@@ -19,6 +19,10 @@ const tableInit = data => {
 const formInit = (keyData, valueData) => {
    let form = document.createElement('form');
    generateForm(form, keyData, valueData);
+   form.addEventListener('submit', e => {
+      editTable(e, users);
+      appInit();
+   });
    document.body.appendChild(form);
 };
 

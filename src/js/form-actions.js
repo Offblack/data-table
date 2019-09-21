@@ -1,3 +1,5 @@
+let stateRowNumber = '';
+
 export const generateForm = (form, keyData, valueData) => {
    for (let user in valueData) {
       if (keyData[user] != 'id') {
@@ -34,6 +36,7 @@ export const generateForm = (form, keyData, valueData) => {
 
 export const showForm = function(users) {
    let rowNumber = event.currentTarget.dataset.key - 1;
+   stateRowNumber = rowNumber;
    let oneUser = users[rowNumber];
    for (let key in oneUser) {
       let valueType = typeof oneUser[key];
@@ -42,13 +45,13 @@ export const showForm = function(users) {
    }
 };
 
-// export const editForm = e => {
-//    e.preventDefault();
-//    let rowNumber = event.currentTarget.dataset.key - 1;
-//    let oneUser = users[rowNumber];
-//    for (let key in oneUser) {
-//       let valueType = typeof oneUser[key];
-//       if (key != 'id') oneUser[key] = document.getElementById(key).value;
-//       if (valueType === 'boolean') oneUser[key] = document.getElementById(key).checked;
-//    }
-// };
+export const editTable = (e, users) => {
+   e.preventDefault();
+   let rowNumber = stateRowNumber;
+   let oneUser = users[rowNumber];
+   for (let key in oneUser) {
+      let valueType = typeof oneUser[key];
+      if (key != 'id') oneUser[key] = document.getElementById(key).value;
+      if (valueType === 'boolean') oneUser[key] = document.getElementById(key).checked;
+   }
+};

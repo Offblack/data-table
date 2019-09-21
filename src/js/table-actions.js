@@ -1,3 +1,5 @@
+import { showForm, showRowNumber } from './form-actions';
+
 //Generate Data
 const generateData = (row, element) => {
    for (let key in element) {
@@ -28,9 +30,10 @@ export const generateTableHead = (table, data) => {
 };
 
 //Generate Data Rows
-export const generateDataRows = (table, data) => {
-   for (let element of data) {
+export const generateDataRows = (table, users) => {
+   for (let element of users) {
       let row = table.insertRow();
       generateData(row, element);
+      row.addEventListener('click', () => showForm(users));
    }
 };
