@@ -5,24 +5,28 @@ import { generateForm, editTable } from './form-actions';
 const appInit = () => {
    let keyData = Object.keys(users[0]);
    let valueData = Object.values(users[0]);
+   let wrapper = document.createElement('div');
    let table = document.createElement('table');
    let form = document.createElement('form');
-   tableInit(table, keyData);
-   formInit(table, form, keyData, valueData);
+   wrapper.id = 'main-wrapper';
+   table.id = 'data-table';
+   document.body.appendChild(wrapper);
+   tableInit(table, keyData, valueData, wrapper);
+   formInit(table, form, keyData, valueData, wrapper);
 };
 
-const tableInit = (table, keyData) => {
-   generateTableHead(table, keyData);
+const tableInit = (table, keyData, valueData, wrapper) => {
+   generateTableHead(table, keyData, valueData);
    generateDataRows(table, users);
-   document.body.appendChild(table);
+   wrapper.appendChild(table);
 };
 
-const formInit = (table, form, keyData, valueData) => {
+const formInit = (table, form, keyData, valueData, wrapper) => {
    generateForm(form, keyData, valueData);
    form.addEventListener('submit', e => {
       editTable(e, table, users);
    });
-   document.body.appendChild(form);
+   wrapper.appendChild(form);
 };
 
 appInit();

@@ -1,0 +1,61 @@
+// 0. Variables
+
+$grey100: hsl(0, 0%, 96%);
+$grey200: hsl(0, 0%, 90%);
+$grey300: hsl(0, 0%, 70%);
+$black: hsl(0, 0%, 0%);
+$light: 300;
+$bold: 600;
+$xxs: 1rem;
+$xs: 1.2rem;
+$s: 1.6rem;
+$m: 2.1rem;
+$l: 2.4rem;
+$xl: 4rem;
+
+// 1. Global styles
+
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+   font-size: 62.5%;
+}
+
+body {
+   font-size: $m;
+   font-family: sans-serif;
+}
+
+// 2. Table styles
+
+#data-table {
+   border-collapse: collapse;
+
+   tr:not(:first-child) {
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+         background-color: $grey100;
+      }
+   }
+
+   th,
+   td {
+      border: 1px solid $grey200;
+
+      &.short-data {
+         padding: 25px 100px 25px 20px;
+      }
+
+      &.long-data {
+         padding: 25px 200px 25px 20px;
+      }
+   }
+}
