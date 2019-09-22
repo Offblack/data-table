@@ -6,18 +6,23 @@ const appInit = () => {
    let keyData = Object.keys(users[0]);
    let valueData = Object.values(users[0]);
    let wrapper = document.createElement('div');
+   let header = document.createElement('h1');
    let table = document.createElement('table');
    let form = document.createElement('form');
    wrapper.id = 'main-wrapper';
+   header.id = 'main-header';
+   header.innerHTML = 'Data table';
    table.id = 'data-table';
+   form.id = 'main-form';
    document.body.appendChild(wrapper);
+   wrapper.appendChild(header);
    tableInit(table, keyData, valueData, wrapper);
    formInit(table, form, keyData, valueData, wrapper);
 };
 
 const tableInit = (table, keyData, valueData, wrapper) => {
-   generateTableHead(table, keyData, valueData);
    generateDataRows(table, users);
+   generateTableHead(table, keyData, valueData);
    wrapper.appendChild(table);
 };
 

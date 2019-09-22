@@ -1,9 +1,29 @@
+/*
+-------------------------------------------------------------------------
+* Name             : Data-table                                         * 
+* Author           : OffBlack                                           *
+* Created          : 23.09.2019                                       * 
+* File Description : Main style file of the template                      *
+*------------------------------------------------------------------------
+*/
+
+/***********************
+    1. Variables       *
+    2. Global styles   *
+    3. Main styles     *
+    4. Table styles    *
+    5. Form styles     *
+************************/
+
 // 0. Variables
 
 $grey100: hsl(0, 0%, 96%);
 $grey200: hsl(0, 0%, 90%);
 $grey300: hsl(0, 0%, 70%);
+$grey400: hsl(0, 0%, 45%);
+$blue: hsl(225, 100%, 56%);
 $black: hsl(0, 0%, 0%);
+$white: hsl(0, 0%, 100%);
 $light: 300;
 $bold: 600;
 $xxs: 1rem;
@@ -32,30 +52,154 @@ body {
    font-family: sans-serif;
 }
 
-// 2. Table styles
+// 2. Main styles
+
+#main-wrapper {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   flex-wrap: wrap;
+
+   #main-header {
+      color: $grey400;
+
+      &::after {
+         content: '';
+         display: block;
+         width: 80%;
+         margin: auto;
+         margin-top: 20px;
+         height: 3px;
+         background-color: $grey300;
+      }
+   }
+}
+
+// 3. Table styles
 
 #data-table {
    border-collapse: collapse;
 
-   tr:not(:first-child) {
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
+   tbody {
+      tr {
+         cursor: pointer;
+         transition: all 0.2s ease-in-out;
 
-      &:hover {
-         background-color: $grey100;
+         &:hover {
+            background-color: $grey100;
+         }
       }
    }
 
    th,
    td {
       border: 1px solid $grey200;
+      box-sizing: border-box;
 
       &.short-data {
          padding: 25px 100px 25px 20px;
       }
 
       &.long-data {
-         padding: 25px 200px 25px 20px;
+         min-width: 280px;
+         max-width: 280px;
+         padding: 25px 0px 25px 20px;
       }
+   }
+}
+
+// 4. Form styles
+
+#main-form {
+   width: 100%;
+   margin: 50px 0;
+   max-width: 900px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: flex-start;
+
+   .form-group {
+      width: 100%;
+      margin: 24px 0;
+      position: relative;
+      flex-shrink: 0;
+
+      .item-bar {
+         width: 100%;
+         height: 2px;
+         background: $grey300;
+         transition: 0.1s all;
+      }
+
+      label {
+         color: $grey300;
+         position: absolute;
+         top: 3px;
+         left: 0;
+         transition: 0.2s ease-out all;
+         font-size: $s;
+      }
+
+      input {
+         color: $grey300;
+         font-size: $s;
+         border: none;
+         line-height: 22px;
+         width: 100%;
+         background: none;
+      }
+
+      input:focus {
+         outline: none;
+         color: $grey400;
+      }
+
+      input:focus + label {
+         top: -22px;
+         font-size: 13px;
+      }
+
+      input:not(:placeholder-shown) + label {
+         top: -22px;
+         font-size: 13px;
+      }
+
+      input:focus ~ .item-bar {
+         background: $blue;
+      }
+   }
+
+   .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+
+      input {
+         width: 18px;
+         height: 18px;
+         margin: 0;
+      }
+
+      label {
+         color: $grey300;
+         font-size: $m;
+         margin-left: 5px;
+      }
+
+      input:checked + label {
+         color: $grey400;
+      }
+   }
+
+   button {
+      margin-top: 30px;
+      background-color: $blue;
+      color: $white;
+      outline: none;
+      border: none;
+      padding: 10px 25px;
+      font-size: $m;
+      border-radius: 5px;
    }
 }
