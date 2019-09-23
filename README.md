@@ -2,6 +2,8 @@
 
 Simple table to view and edit data.
 
+LIVE: https://offblack.github.io/data-table/
+
 ![alt text](https://raw.githubusercontent.com/Offblack/data-table/master/screenshot.png)
 
 ## What's inside?
