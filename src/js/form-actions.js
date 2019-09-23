@@ -1,6 +1,7 @@
 let stateRowNumber = '';
 let editAcitve = false;
 
+// Generate Form
 export const generateForm = (form, keyData, valueData) => {
    for (let user in valueData) {
       if (keyData[user] != 'id') {
@@ -40,6 +41,7 @@ export const generateForm = (form, keyData, valueData) => {
    form.appendChild(button);
 };
 
+// Show Data in Form
 export const showForm = function(users) {
    let rowNumber = event.currentTarget.dataset.key - 1;
    stateRowNumber = rowNumber;
@@ -52,6 +54,7 @@ export const showForm = function(users) {
    editAcitve = true;
 };
 
+// Edit Table
 export const editTable = (e, table, users) => {
    e.preventDefault();
    if (editAcitve) {

@@ -2,6 +2,7 @@ import { users } from '../data/data';
 import { generateTableHead, generateDataRows } from './table-actions';
 import { generateForm, editTable } from './form-actions';
 
+// App init
 const appInit = () => {
    let keyData = Object.keys(users[0]);
    let valueData = Object.values(users[0]);
@@ -20,12 +21,14 @@ const appInit = () => {
    formInit(table, form, keyData, valueData, wrapper);
 };
 
+// Table init
 const tableInit = (table, keyData, valueData, wrapper) => {
    generateDataRows(table, users);
    generateTableHead(table, keyData, valueData);
    wrapper.appendChild(table);
 };
 
+// Form init
 const formInit = (table, form, keyData, valueData, wrapper) => {
    generateForm(form, keyData, valueData);
    form.addEventListener('submit', e => {
